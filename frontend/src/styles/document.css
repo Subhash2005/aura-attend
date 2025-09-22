@@ -1,0 +1,118 @@
+/* Professional Documentation Color Palette */
+:root {
+  --bg-color: #f8f9fa;
+  --nav-bg-color: #e9ecef;
+  --text-color: #212529;
+  --accent-color: #007bff;
+  --link-color: #007bff;
+  --link-hover-color: #0056b3;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Overall Container and Layout */
+.documentation-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.documentation-nav {
+  width: 250px;
+  padding: 2rem 1rem;
+  background-color: var(--nav-bg-color);
+  border-right: 1px solid #dee2e6;
+  position: sticky; /* Makes the navigation bar stay at the top */
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.documentation-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.documentation-nav li {
+  margin-bottom: 0.5rem;
+}
+
+.documentation-nav a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.documentation-nav a:hover {
+  background-color: #d1e2ff;
+  color: var(--accent-color);
+}
+
+/* Main Content Area */
+.documentation-content {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+}
+
+.project-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.page-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: var(--accent-color);
+}
+
+.doc-section {
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 2rem;
+}
+
+.doc-section:last-child {
+  border-bottom: none;
+}
+
+.doc-section h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.doc-section h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent-color);
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+ul {
+  line-height: 1.6;
+  margin-left: 1.5rem;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,92 @@
+.home-container {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Hero Images Row */
+.hero-images-row {
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+/* Hero Image Containers */
+.hero-img-container {
+  width: fit-content;
+  position: relative;
+}
+
+/* Side Images */
+.img-side {
+  width: 180px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.img-side:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+/* Middle Image */
+.img-middle {
+  width: 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.img-middle:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+/* Colored Bubbles behind side images */
+.bg-orange-bubble {
+  width: 140px;
+  height: 140px;
+  background-color: rgba(255,165,0,0.3);
+  border-radius: 50%;
+  top: -40px;
+  left: -20px;
+  z-index: -1;
+}
+.bg-blue-bubble {
+  width: 140px;
+  height: 140px;
+  background-color: rgba(30,144,255,0.3);
+  border-radius: 50%;
+  top: -40px;
+  right: -20px;
+  z-index: -1;
+}
+
+/* Ellipse Overlay on Middle Image */
+.ellipse-overlay {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(106,13,173,0.85);
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-align: center;
+}
+.ellipse-overlay h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+.ellipse-overlay p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Bubble Boxes Below Images */
+.bubble-box {
+  padding: 10px 20px;
+  border-radius: 50px;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+.bubble-box:hover {
+  transform: scale(1.1);
+}

@@ -1,0 +1,610 @@
+
+.ellipse {
+width: "300px";
+        height: 100px;
+        background: rgba(121, 17, 196, 0.85);
+        border: 4px dashed #fff;
+        border-radius: 30% / 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 30px;
+  background-color: #e7e8e4; 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  height: 200px;
+  justify-content: center;
+}
+
+.explore {
+  padding: 0.5rem 1rem; 
+  background-color: rgba(249, 124, 8, 0.925); 
+  border-radius: 0.75rem; 
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  height: 50px;
+}
+
+.explore:hover {
+  background-color: rgba(247, 0, 0, 0.3); /* hover:bg-white/30 equivalent */
+}
+
+.hover-container {
+  position: relative; 
+  display: inline-block; 
+}
+
+.sliding-window {
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  width: 200px; /* Adjust the width as needed */
+  max-height: 0; /* Starts with a height of 0, making it invisible */
+  overflow: hidden; /* Hides content until the height expands */
+  background-color: #b774a2; /* Dark background for the window */
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: max-height 0.4s ease-out; /* The animation for the sliding effect */
+  z-index: 10;
+}
+
+/* On hover, make the window visible and animate its height */
+.hover-container:hover .sliding-window {
+  max-height: 250px; 
+}
+
+.sliding-item {
+  display: block; 
+  padding: 12px 16px;
+  color: white; /* White text for contrast */
+  text-decoration: none; 
+  border-bottom: 1px solid rgba(231, 255, 12, 0.915);
+  transition: background-color 0.2s ease;
+}
+
+.sliding-item:last-child {
+  border-bottom: none; /* Removes the border from the last item */
+}
+
+.sliding-item:hover {
+  background-color: #e8cccc; /* Changes background on hover for individual items */
+}
+
+.ellipse {
+  padding: 50px 150px;
+  text-align: center;
+  color: white;
+  border: 4px dashed #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: float 3s ease-in-out infinite;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+
+.ellipse .title {
+
+  font-size: 2.5rem;
+
+  margin-bottom: 0.5rem;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+}
+
+
+
+.ellipse .slogan {
+
+  font-size: 1.2rem;
+
+  font-weight: 400;
+
+  opacity: 0.9;
+
+}
+
+
+
+.ellipse:hover {
+
+  transform: translateY(-10px) scale(1.05);
+
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+
+}
+
+
+
+/* Floating animation */
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+}
+
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+  .ellipse {
+
+    padding: 30px 50px;
+
+  }
+
+  .ellipse .title {
+
+    font-size: 2rem;
+
+  }
+
+  .ellipse .slogan {
+
+    font-size: 1rem;
+
+  }
+
+}
+
+/* Container to center the whole element on the page */
+
+.centered-container {
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  height: 100vh;
+
+  background-color: #f2f4f7;
+  /* Background color from the first image */
+
+  overflow: hidden;
+  /* Hide anything that overflows */
+
+}
+
+
+
+
+
+
+
+/* Container for the fanned cards */
+
+.cards-fan-container {
+
+  position: relative;
+
+  background: linear-gradient(to bottom right,
+
+      #ee7300,
+      /* Top-left color (light blue-grey) */
+
+      #e7e7e8,
+
+      #06ea3b
+      /* Bottom-right color (slightly darker) */
+
+    );
+
+  /* Set a specific size for the background container */
+
+  width: 800px;
+
+  height: 500px;
+
+  border-radius: 20px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* Take full height of parent */
+
+  display: flex;
+  /* Helps to center the overall card group */
+
+  justify-content: center;
+
+  align-items: center;
+
+}
+
+
+
+/* Base styling for each card */
+
+.card-item {
+
+  position: absolute;
+  /* Allows for overlapping and exact positioning */
+
+  width: 350px;
+  /* Width of the card */
+
+  height: 350px;
+  /* Height of the card */
+
+  background-color: rgb(149, 30, 217);
+
+  border-radius: 10px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  overflow: hidden;
+  /* Ensures content stays within rounded corners */
+
+  border: 2px solid white;
+  /* A slight border for definition */
+
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+
+}
+
+
+
+.card-item img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+  /* Ensures image covers the card item */
+
+  border-radius: 10px;
+
+}
+
+
+
+/* Styling for the left card */
+
+.card-left {
+
+  transform: translateX(-150px) translateY(10px) rotate(-20deg);
+  /* Move left, down, and rotate */
+
+  z-index: 1;
+  /* Layering */
+
+  opacity: 0.8;
+  /* Slightly faded */
+
+}
+
+
+
+/* Styling for the middle card */
+
+.card-middle {
+
+  transform: translateY(-20px) scale(1.1);
+  /* Slightly larger and lifted */
+
+  z-index: 3;
+  /* On top */
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  /* More prominent shadow */
+
+}
+
+
+
+/* Styling for the right card */
+
+.card-right {
+
+  transform: translateX(150px) translateY(10px) rotate(20deg);
+  /* Move right, down, and rotate */
+
+  z-index: 2;
+  /* Middle layer */
+
+  opacity: 0.8;
+  /* Slightly faded */
+
+}
+
+
+
+/* Hover effect for all cards */
+
+.card-item:hover {
+
+  transform: translateY(-30px) scale(1.15) rotate(0deg) !important;
+  /* Lift, center, and slightly enlarge */
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  /* Even deeper shadow */
+
+  z-index: 4;
+  /* Bring to front on hover */
+
+  opacity: 1 !important;
+  /* Full opacity on hover */
+
+}
+
+
+
+/* Specific content for the middle card if it has text like "Aura-Attend" */
+
+.card-middle .card-content {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 100%;
+
+  height: 100%;
+
+  text-align: center;
+
+  color: #333;
+  /* Example text color */
+
+}
+
+
+
+.card-middle .card-content img {
+
+  width: 80px;
+  /* Adjust logo size */
+
+  height: auto;
+
+  margin-bottom: 10px;
+
+}
+
+
+
+.card-middle .card-content h2 {
+
+  font-size: 1.8rem;
+
+  font-weight: bold;
+
+  color: #FF8C00;
+  /* Orange color from your image */
+
+  margin-bottom: 5px;
+
+}
+
+
+
+.card-middle .card-content p {
+
+  font-size: 1rem;
+
+  color: #666;
+
+  margin: 0;
+
+}
+
+.card-container {
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  min-height: 10px;
+
+  background: linear-gradient(45deg, #0958f6f7, #bcb8b8);
+  /* A bold, vibrant gradient */
+
+  background-size: 10% 10%;
+
+  animation: bg-animation 15s ease infinite;
+
+}
+
+
+
+/* Keyframes for the background animation */
+
+@keyframes bg-animation {
+
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+
+}
+
+
+
+/* The Glassmorphism Card */
+
+.glass-card {
+
+  position: relative;
+
+  width: 800px;
+
+  min-height: 250px;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  background: rgba(38, 118, 71, 0.1);
+
+  box-shadow: 0 8px 32px 0 rgb(118, 119, 117);
+
+  backdrop-filter: blur(10px);
+
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  transition: transform 0.3s ease-in-out;
+
+}
+
+
+
+.glass-card:hover {
+
+  transform: translateY(-10px);
+
+}
+
+
+
+/* Card Content */
+
+.content {
+
+  color: #111111;
+
+  text-align: center;
+
+  font-family: 'Poppins', sans-serif;
+
+}
+
+
+
+.card-header {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+
+}
+
+
+
+.img3 {
+
+  width: 200px;
+
+  height: 200px;
+
+  border-radius: 50%;
+
+  margin-bottom: 10px;
+
+}
+
+
+
+.title {
+
+  font-size: 2rem;
+
+  font-weight: 600;
+
+  margin: 0;
+
+}
+
+
+
+.description {
+
+  font-size: 1rem;
+
+  font-weight: 300;
+
+  line-height: 1.6;
+
+}
+
+
+
+/* Glowing Button */
+
+.learn-more {
+
+  margin-top: 20px;
+
+  padding: 10px 25px;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  background: rgba(255, 255, 255, 0.1);
+
+  color: #fff;
+
+  font-size: 1rem;
+
+  font-weight: 500;
+
+  border-radius: 50px;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(5px);
+
+  transition: background 0.3s ease, border 0.3s ease;
+
+}
+
+
+
+.learn-more:hover {
+
+  background: rgba(255, 255, 255, 0.2);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+}

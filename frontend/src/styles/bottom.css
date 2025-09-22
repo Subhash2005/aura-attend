@@ -1,0 +1,100 @@
+/* Container and basic section styles */
+.timeline-section {
+  padding: 80px 20px;
+  background-color: #52aad3;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0000019f;
+  margin-bottom: 50px;
+}
+
+/* The vertical timeline line */
+.timeline-container {
+  position: relative;
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background-color: #0d6dad;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+/* Base style for timeline items */
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 40%;
+}
+
+/* The circular marker, now positioned away from the line */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #0dad3d; /* A solid color like in the image */
+  top: 15px;
+  border-radius: 100%;
+  z-index: 1; /* Esures it's behind the content on hover */
+  transition: all 0.3s ease;
+}
+
+/* Content box styling */
+.timeline-content {
+  padding: 20px 30px;
+  background-color: #a48484;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 2; /* Ensures the card content is always on top */
+}
+
+/* Placement of left and right items */
+.timeline-left {
+  left: 0;
+  text-align: right; /* Aligns text to the right for left items */
+}
+
+.timeline-right {
+  left: 50%;
+  text-align: left; /* Aligns text to the left for right items */
+}
+
+/* Position the marker for left items */
+.timeline-left::after {
+  left: 100%;
+  transform: translateX(18px); /* Moves the circle away from the line */
+}
+
+/* Position the marker for right items */
+.timeline-right::after {
+  left: -20px;
+  transform: translateX(-18px); /* Moves the circle away from the line */
+}
+
+/* --- Hover Effects --- */
+.timeline-item:hover .timeline-content {
+  transform: scale(1.05); /* Scales the card */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-item:hover::after {
+  transform: scale(1.3); /* Makes the circle slightly bigger on hover */
+  box-shadow: 0 0 10px rgba(106, 0, 189, 0.5); /* Adds a subtle glow */
+}

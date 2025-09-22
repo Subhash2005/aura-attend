@@ -1,0 +1,97 @@
+.dynamic-cards-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 150vh;
+  background-color: #222;
+  font-family: 'Electrolize', sans-serif;
+  overflow: hidden;
+  position: relative;
+  perspective: 1500px;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff, 0 0 30px #00aaff;
+  margin-bottom: 60px;
+  letter-spacing: 2px;
+}
+
+/* New Grid Layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-items: center;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  padding: 20px;
+  transform-style: preserve-3d;
+}
+
+.dynamic-card {
+  width: 250px;
+  height: 380px;
+  border-radius: 15px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* Neon Border Effect */
+  box-shadow: 
+    0 0 10px #00eaff,
+    0 0 20px rgba(0, 234, 255, 0.6),
+    inset 0 0 5px #00eaff;
+  border: 1px solid rgba(0, 234, 255, 0.4);
+}
+
+.card-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1; /* Makes the photo fully visible */
+  filter: none; /* Removes any filters */
+}
+
+.card-text-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  z-index: 1;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.6);
+  /* Removes all text transformations for readability */
+  transform: none; 
+}
+
+.card-main-title {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #ff00ff;
+  text-shadow: 0 0 8px #ff00ff, 0 0 15px rgba(255, 0, 255, 0.7);
+}
+
+.card-sub-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  text-transform: uppercase;
+  color: #00eaff;
+  text-shadow: 0 0 5px #00eaff, 0 0 10px rgba(0, 234, 255, 0.5);
+}
