@@ -1,0 +1,297 @@
+/* Fees Overlay */
+.fees-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: flex-end;
+    z-index: 1000;
+}
+
+/* Bottom Sheet */
+.fees-sheet {
+    background: #0b0f19;
+    color: #f8fafc;
+    width: 100%;
+    height: 85vh;
+    border-radius: 28px 28px 0 0;
+    padding: 24px;
+    animation: slideUpSheet 0.45s ease-out;
+    overflow-y: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Header */
+.fees-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 12px;
+}
+
+.fees-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fees-header h2 svg {
+    color: #eab308;
+}
+
+.fees-header .close-btn {
+    font-size: 24px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.fees-header .close-btn:hover {
+    color: #ef4444;
+}
+
+/* Overview Cards Grid */
+.ledger-overview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+    .ledger-overview {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ledger-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.ledger-card .icon {
+    font-size: 28px;
+}
+
+.ledger-card h4 {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+.ledger-card .amount {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.ledger-card.outstanding {
+    border-color: rgba(234, 179, 8, 0.2);
+}
+
+.ledger-card.outstanding .icon, .ledger-card.outstanding .amount {
+    color: #eab308;
+}
+
+.ledger-card.paid {
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+.ledger-card.paid .icon, .ledger-card.paid .amount {
+    color: #10b981;
+}
+
+.ledger-card.database {
+    font-size: 12px;
+    color: #cbd5e1;
+    line-height: 1.4;
+}
+
+.ledger-card.database .icon {
+    color: #a855f7;
+}
+
+/* Receipt list */
+.fees-body {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.fees-body h3 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.receipt-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-height: 380px;
+    overflow-y: auto;
+}
+
+.empty-receipts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.empty-receipts h4 {
+    color: #f8fafc;
+    font-size: 16px;
+}
+
+.empty-receipts p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.receipt-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.receipt-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 600px) {
+    .receipt-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .receipt-right {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.receipt-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.receipt-badge {
+    background: rgba(255, 255, 255, 0.05);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e2e8f0;
+    font-size: 16px;
+}
+
+.receipt-item.unpaid .receipt-badge {
+    color: #eab308;
+    background: rgba(234, 179, 8, 0.1);
+}
+
+.receipt-item.paid .receipt-badge {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.receipt-left h4 {
+    font-size: 15px;
+    color: #f8fafc;
+    margin-bottom: 4px;
+}
+
+.receipt-meta {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.receipt-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.receipt-amount-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.receipt-amount-block .amount {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.status-text {
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-text.unpaid {
+    color: #eab308;
+}
+
+.status-text.paid {
+    color: #10b981;
+}
+
+.pay-now-btn {
+    background: linear-gradient(135deg, #eab308, #ca8a04);
+    color: #0b0f19;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.pay-now-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
+}
+
+.receipt-stamp {
+    font-size: 12px;
+    color: #64748b;
+    font-style: italic;
+    border: 1px dashed #64748b;
+    padding: 4px 8px;
+    border-radius: 4px;
+}

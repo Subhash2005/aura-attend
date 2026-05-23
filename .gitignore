@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+
+# logs
+logs
+*.log
+
+# build folders
+dist/
+build/
+
+# cache
+.cache/
+
+# OS files
+.DS_Store
+Thumbs.db

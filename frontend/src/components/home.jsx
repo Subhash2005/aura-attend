@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import "../styles/Home.css";
 import img1 from "../assets/mainpage/img1.png"; // Left
 import img2 from "../assets/mainpage/img2.png"; // Middle
-import img3 from "../assets/mainpage/img2.png"; // Right
+import img3 from "../assets/mainpage/img3.png"; // Right
 
 
 
@@ -22,6 +22,7 @@ function EllipseText() {
 <Link to="/suggestion" className="sliding-item">Add Suggestion</Link>
 <Link to="/organization" className="sliding-item">Organization</Link>
 <Link to="/spons" className="sliding-item">Sponsors</Link>
+<Link to="/services" className="sliding-item">Services</Link>
 <Link to="/documentation" className="sliding-item">Documentation</Link>
     </div>
   </div>
@@ -41,9 +42,8 @@ function EllipseText() {
     </button>
     <div class="sliding-window">
 <Link to="/Register" className="sliding-item">Register</Link>
-      <a href="/login" class="sliding-item">Student Login</a>
-      <a href="#" class="sliding-item">Staff Login</a>
-      <a href="#" class="sliding-item">Organization Login for user</a>
+      <a href="/login" class="sliding-item">Login</a>
+
     </div>
   </div>
   </div>
@@ -78,7 +78,7 @@ function EllipseText() {
         <div className="glass-card">
           <div className="content">
             <div className="card-header">
-              <img src={img3} alt="Platform Logo" className="img3" />
+              <img src={img2} alt="Platform Logo" className="img3" />
               <h2 className="title">Effortless Attendance</h2>
             </div>
             <p className="description">

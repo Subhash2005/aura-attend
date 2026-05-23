@@ -1,0 +1,244 @@
+/* Leave Overlay */
+.leave-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: flex-end;
+    z-index: 1000;
+}
+
+/* Bottom Sheet */
+.leave-sheet {
+    background: #0f172a;
+    color: #f8fafc;
+    width: 100%;
+    height: 85vh;
+    border-radius: 28px 28px 0 0;
+    padding: 24px;
+    animation: slideUpSheet 0.45s ease-out;
+    overflow-y: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideUpSheet {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Header */
+.leave-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 12px;
+}
+
+.leave-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.leave-header .close-btn {
+    font-size: 24px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.leave-header .close-btn:hover {
+    color: #ef4444;
+}
+
+/* Note */
+.leave-note {
+    background: rgba(56, 189, 248, 0.1);
+    border-left: 4px solid #38bdf8;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: #bae6fd;
+}
+
+/* Body Grid Layout */
+.leave-body-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 768px) {
+    .leave-body-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Forms & Cards */
+.leave-card-form, .leave-card-history {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.leave-card-form h3, .leave-card-history h3 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    color: #f1f5f9;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 8px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-group input, .form-group textarea {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 12px;
+    color: #f8fafc;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: none;
+}
+
+.submit-leave-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.submit-leave-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4);
+}
+
+/* History List */
+.leave-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.empty-leaves {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 40px 0;
+    color: #64748b;
+}
+
+.empty-leaves svg {
+    font-size: 32px;
+}
+
+.leave-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 14px;
+    transition: 0.3s;
+}
+
+.leave-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.leave-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.status-pill {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.status-pill.approved {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+.status-pill.pending {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.leave-date {
+    font-size: 12px;
+    color: #38bdf8;
+    font-weight: 500;
+}
+
+.leave-reason {
+    font-size: 13px;
+    color: #cbd5e1;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+.leave-db-stamp {
+    font-size: 10px;
+    color: #64748b;
+    font-style: italic;
+    display: block;
+    text-align: right;
+}

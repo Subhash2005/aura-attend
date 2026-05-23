@@ -8,19 +8,19 @@ function Team() {
     {
       name: 'Technical Team',
       id: 'technical',
-      members: ['John Doe', 'Jane Smith', 'Alex Ray', 'Michael Chen'],
+      members: ['Subhash', '📞 7695903778', '✉️ subhash1422005s@gmail.com'],
       icon: '⚙️'
     },
     {
       name: 'Core Members',
       id: 'core',
-      members: ['Emily White', 'David Brown'],
+      members: ['Subhash', '📞 7695903778', '✉️ subhash1422005s@gmail.com'],
       icon: '👑'
     },
     {
       name: 'Media Team',
       id: 'media',
-      members: ['Sarah Lee', 'Mark Chen', 'Laura Wilson'],
+      members: ['Subhash', '📞 7695903778', '✉️ subhash1422005s@gmail.com'],
       icon: '📸'
     },
   ];

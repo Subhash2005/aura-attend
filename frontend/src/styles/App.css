@@ -1,7 +1,80 @@
+/* ===================================================
+   AURA ATTEND — GLOBAL MOBILE-FIRST BASE STYLES
+   =================================================== */
+
+/* Box model reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base font — Inter from Google Fonts */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: #e2e8f0;
+  background: #0f172a;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Touch-friendly tap targets — all interactive elements minimum 44px */
+button, a, input, select, textarea, label {
+  touch-action: manipulation;
+}
+
+button {
+  min-height: 44px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: 16px; /* Prevents iOS auto-zoom on focus */
+}
+
+/* Images responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Scrollbar styling for desktop */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 3px;
+}
+
+/* ===================================================
+   HOME PAGE COMPONENTS
+   =================================================== */
 .home-container {
   background-color: #f8f9fa;
   min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
 /* Hero Images Row */
@@ -22,6 +95,9 @@
   width: 180px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
+@media (max-width: 480px) {
+  .img-side { width: 100px; }
+}
 .img-side:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 25px rgba(0,0,0,0.3);
@@ -31,6 +107,9 @@
 .img-middle {
   width: 250px;
   transition: transform 0.3s, box-shadow 0.3s;
+}
+@media (max-width: 480px) {
+  .img-middle { width: 140px; }
 }
 .img-middle:hover {
   transform: translateY(-5px);
@@ -69,11 +148,11 @@
   text-align: center;
 }
 .ellipse-overlay h2 {
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
   margin-bottom: 0.3rem;
 }
 .ellipse-overlay p {
-  font-size: 1rem;
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
   margin: 0;
 }
 

@@ -316,3 +316,48 @@
   line-height: 1.6;
   color: var(--text-color);
 }
+
+/* Sponsor Logo Containers and Avatars */
+.sponsor-logo-container {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+  border: 3px solid var(--accent-color);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.sponsor-logo-img {
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
+}
+
+.sponsor-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+  border: 3px solid var(--accent-color);
+  background: linear-gradient(135deg, #ff5722 0%, #ff8a65 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.sponsor-card:hover .sponsor-logo-container,
+.sponsor-card:hover .sponsor-avatar {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3);
+}

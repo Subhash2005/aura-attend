@@ -1,0 +1,341 @@
+/* Overlay */
+.profile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: flex-end;
+    z-index: 1000;
+}
+
+/* Bottom Sheet */
+.profile-sheet {
+    width: 100%;
+    height: 90vh;
+    background: #f8fafc;
+    border-radius: 30px 30px 0 0;
+    animation: bubbleUp 0.45s ease-out;
+    overflow-y: auto;
+}
+
+/* Top Section */
+.profile-top {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: white;
+    text-align: center;
+    padding: 30px 20px 40px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Avatar */
+.avatar-ring {
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    border-radius: 50%;
+    background: white;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.25);
+}
+
+.avatar-ring svg {
+    font-size: 40px;
+    color: #4f46e5;
+}
+
+.profile-top h2 {
+    margin-top: 12px;
+}
+
+.reg {
+    opacity: 0.85;
+}
+
+/* Info Grid */
+.profile-grid {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.info-box {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.info-box span {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.info-box p {
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.info-box svg {
+    color: #4f46e5;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.info-box.highlight {
+    grid-column: span 2;
+    background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+}
+
+/* Animation */
+@keyframes bubbleUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Edit toggle button */
+.edit-toggle-btn {
+    margin-top: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.edit-toggle-btn:hover {
+    background: white;
+    color: #4f46e5;
+}
+
+/* DB Indicator */
+.profile-db-indicator {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 11px;
+    color: #4f46e5;
+    background: #eef2ff;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    border: 1px solid #c7d2fe;
+}
+
+.profile-db-indicator.verified {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Compulsory warning banner */
+.compulsory-warning-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 20px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    color: #f87171;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: left;
+    animation: flashBorder 2s infinite alternate;
+}
+
+@keyframes flashBorder {
+    from { border-color: rgba(239, 68, 68, 0.2); }
+    to { border-color: rgba(239, 68, 68, 0.8); }
+}
+
+/* Form inputs in profile boxes */
+.info-box input {
+    width: 100%;
+    margin-top: 6px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #c7d2fe;
+    outline: none;
+    font-size: 14px;
+    font-weight: 600;
+    background: #f8fafc;
+    color: #1e293b;
+    box-sizing: border-box;
+}
+
+.info-box input:focus {
+    border-color: #4f46e5;
+    background: white;
+    box-shadow: 0 0 8px rgba(79, 70, 229, 0.15);
+}
+
+/* Biometric avatar picture */
+.avatar-ring-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.profile-avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar-ring {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.avatar-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(79, 70, 229, 0.75);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    opacity: 0;
+    transition: 0.3s;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.avatar-ring:hover .avatar-overlay {
+    opacity: 1;
+}
+
+/* Visual Photo & ID Upload slot styles */
+.profile-upload-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.profile-upload-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile-upload-card span {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+}
+
+.upload-box {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px dashed rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.upload-box:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: white;
+}
+
+.upload-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-placeholder {
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.upload-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(79, 70, 229, 0.95);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    padding: 6px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: 0.3s;
+}
+
+.upload-btn:hover {
+    background: #4f46e5;
+}
+
+.profile-photos-display {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.id-card-thumbnail {
+    width: 90px;
+    height: 90px;
+    border-radius: 12px;
+    background: white;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.25);
+    overflow: hidden;
+}
+
+.id-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

@@ -1,76 +1,92 @@
-import React, { useState } from 'react';
-import '../styles/login.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/login.css";
+import API_BASE from "../config";
 
 const Login = () => {
-  const [isActive, setIsActive] = useState(false);
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleRegisterClick = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setIsActive(true);
+
+    if (!username || !password) return;
+
+    try {
+      const res = await fetch(`${API_BASE}/api/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        localStorage.setItem("username", username);
+        navigate("/attendance");
+      } else {
+        alert("Invalid username or password");
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const handleLoginClick = (e) => {
-    e.preventDefault();
-    setIsActive(false);
-  };
 
   return (
-    <div className="auth-page-container">
-      <div className={`container ${isActive ? 'active' : ''}`}>
-        
-        {/* Background element */}
-        <div className="auth-background"></div>
+    <div className="login-body">
+      <div className="orb"></div>
+      <div className="orb"></div>
+      <div className="orb"></div>
 
-        {/* LOGIN FORM */}
-        <div className="form-box Login">
-          <h2>Login</h2>
-          <div className="input-box">
-            <input type="text" required />
-            <label>Username</label>
-          </div>
-          <div className="input-box">
-            <input type="password" required />
-            <label>Password</label>
-          </div>
-          <button type="submit" className="btn">Login</button>
-          <div className="regi-link">
-            Don’t have an account?{" "}
-            <a href="#" onClick={handleRegisterClick}>Sign Up</a>
-          </div>
-        </div>
+      <div className="login-wrapper">
+        <div className="login-frame">
+          <div className="login-card">
+            <div className="badge">L</div>
+            <div className="title">Log In</div>
+            <div className="subtitle">
+              Welcome back — enter your credentials.
+            </div>
 
-        {/* LOGIN INFO */}
-        <div className="info-content Login">
-          <h2>WELCOME BACK!</h2>
-          <p>We are happy to have you with us again. If you need anything, we are here to help.</p>
-        </div>
-        
-        {/* REGISTER FORM */}
-        <div className="form-box Register">
-          <h2>Register</h2>
-          <div className="input-box">
-            <input type="text" required />
-            <label>Username</label>
-          </div>
-          <div className="input-box">
-            <input type="email" required />
-            <label>Email</label>
-          </div>
-          <div className="input-box">
-            <input type="password" required />
-            <label>Password</label>
-          </div>
-          <button type="submit" className="btn">Register</button>
-          <div className="regi-link">
-            Already have an account?{" "}
-            <a href="#" onClick={handleLoginClick}>Sign In</a>
-          </div>
-        </div>
+            <form onSubmit={handleLogin}>
+              <div className="field-group">
+                <input
+                  type="text"
+                  className="field-input"
+                  placeholder="Username"
+                  required
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+                <label className="field-label">Username</label>
+                <div className="field-icon"><span>U</span></div>
+              </div>
 
-        {/* REGISTER INFO */}
-        <div className="info-content Register">
-          <h2>WELCOME!</h2>
-          <p>We’re delighted to have you here. If you need any assistance, feel free to reach out.</p>
+              <div className="field-group">
+                <input
+                  type="password"
+                  className="field-input"
+                  placeholder="Password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <label className="field-label">Password</label>
+                <div className="field-icon"><span>P</span></div>
+              </div>
+
+              <button type="submit" className="login-btn">
+                Enter
+              </button>
+            </form>
+
+            <center>
+              <a href="/register" className="login-link">
+                Register
+              </a>
+            </center>
+          </div>
         </div>
       </div>
     </div>

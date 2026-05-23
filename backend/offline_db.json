@@ -1,0 +1,19 @@
+[
+  {
+    "id": "1779529331954",
+    "username": "subhash",
+    "email": "subhash1422005s@gmail.com",
+    "mobile": "7695903778",
+    "category": "college",
+    "organizationName": "sri sairam institute of technology",
+    "role": "student",
+    "password": "$2b$10$UmdA2IJEbObAqh/x276VeulueQxu1uR/P2y7eYVmzVTYQY./jKJW6",
+    "roleDetails": {
+      "orgName": "sri sairam institute of technology",
+      "classYear": "C/1V",
+      "dept": "IT",
+      "password": "1234567890"
+    },
+    "createdAt": "2026-05-23T09:42:11.954Z"
+  }
+]

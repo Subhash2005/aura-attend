@@ -2,13 +2,20 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import '../styles/CardAnimation.css';
 
+import marketplaceImg from '../assets/features/marketplace.png';
+import attendanceImg from '../assets/features/attendance.png';
+import projectImg from '../assets/features/project.png';
+import clientImg from '../assets/features/client.png';
+import analyticsImg from '../assets/features/analytics.png';
+import teamImg from '../assets/features/team.png';
+
 const cardContentData = [
-  { id: 1, title: 'DIGITAL', description: 'MARKETPLACE', imageUrl: 'https://via.placeholder.com/300x400/3498db/ffffff?text=Card+1' },
-  { id: 2, title: 'EASY', description: 'ATTENDANCE', imageUrl: 'https://via.placeholder.com/300x400/e74c3c/ffffff?text=Card+2' },
-  { id: 3, title: 'PROJECT', description: 'MANAGER', imageUrl: 'https://via.placeholder.com/300x400/2ecc71/ffffff?text=Card+3' },
-  { id: 4, title: 'CLIENT', description: 'RELATIONS', imageUrl: 'https://via.placeholder.com/300x400/f1c40f/ffffff?text=Card+4' },
-  { id: 5, title: 'ANALYTICS', description: 'INSIGHTS', imageUrl: 'https://via.placeholder.com/300x400/9b59b6/ffffff?text=Card+5' },
-  { id: 6, title: 'TEAM', description: 'COLLABORATION', imageUrl: 'https://via.placeholder.com/300x400/34495e/ffffff?text=Card+6' },
+  { id: 1, title: 'DIGITAL', description: 'MARKETPLACE', imageUrl: marketplaceImg },
+  { id: 2, title: 'EASY', description: 'ATTENDANCE', imageUrl: attendanceImg },
+  { id: 3, title: 'PROJECT', description: 'MANAGER', imageUrl: projectImg },
+  { id: 4, title: 'CLIENT', description: 'RELATIONS', imageUrl: clientImg },
+  { id: 5, title: 'ANALYTICS', description: 'INSIGHTS', imageUrl: analyticsImg },
+  { id: 6, title: 'TEAM', description: 'COLLABORATION', imageUrl: teamImg },
 ];
 
 function DynamicUseCases() {

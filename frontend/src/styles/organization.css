@@ -161,3 +161,56 @@
 .organizations-container.animate {
   animation: fadeIn 1s ease-out forwards;
 }
+
+/* Neon Text-based Monogram Avatars for Partners */
+.org-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 0.5rem auto;
+  border: 2px solid var(--border-color);
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.org-carousel-item:hover .org-avatar,
+.org-card:hover .org-avatar {
+  border-color: var(--accent-color);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+}
+
+/* Official Logo Containers */
+.org-avatar-container {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 0.5rem auto;
+  border: 2px solid var(--border-color);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.org-logo-img {
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
+}
+
+.org-carousel-item:hover .org-avatar-container,
+.org-card:hover .org-avatar-container {
+  border-color: var(--accent-color);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+}

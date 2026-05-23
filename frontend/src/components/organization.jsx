@@ -1,50 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/organization.css';
+import API_BASE from '../config';
 
-const organizationData = [
-  {
-    category: 'Colleges',
-    id: 'colleges',
-    organizations: [
-      { id: 1, name: 'State University', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=C1' },
-      { id: 2, name: 'Tech Institute', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=C2' },
-      { id: 3, name: 'Community College', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=C3' },
-      { id: 4, name: 'Ivy Academy', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=C4' },
-      { id: 5, name: 'Global University', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=C5' },
-    ],
-  },
-  {
-    category: 'Companies',
-    id: 'companies',
-    organizations: [
-      { id: 1, name: 'Tech Solutions Inc.', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=Co1' },
-      { id: 2, name: 'Global Corp', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=Co2' },
-      { id: 3, name: 'Innovate Solutions', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=Co3' },
-      { id: 4, name: 'Future Enterprises', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=Co4' },
-    ],
-  },
-  {
-    category: 'Schools',
-    id: 'schools',
-    organizations: [
-      { id: 1, name: 'Liberty High School', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=S1' },
-      { id: 2, name: 'Maple Elementary', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=S2' },
-      { id: 3, name: 'Sunrise School', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=S3' },
-    ],
-  },
-  {
-    category: 'Shops',
-    id: 'shops',
-    organizations: [
-      { id: 1, name: 'Local Grocer', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=Sh1' },
-      { id: 2, name: 'Fashion Boutique', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=Sh2' },
-      { id: 3, name: 'Book Nook', logo: 'https://placehold.co/100x100/f0f9ff/334155?text=Sh3' },
-    ],
-  },
-];
+// Self-healing avatar image component with a smooth monogram fallback
+const OrgLogo = ({ org }) => {
+  const [imgFailed, setImgFailed] = useState(false);
+
+  if (imgFailed || !org.logo) {
+    return <div className="org-avatar">{org.name.charAt(0)}</div>;
+  }
+
+  return (
+    <div className="org-avatar-container">
+      <img 
+        src={org.logo} 
+        alt={org.name} 
+        className="org-logo-img" 
+        onError={() => setImgFailed(true)} 
+      />
+    </div>
+  );
+};
 
 const Organizations = () => {
+  const [orgs, setOrgs] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+
+  // Fetch Organizations from backend
+  useEffect(() => {
+    const fetchOrgs = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/explore/organizations`);
+        if (res.ok) {
+          const data = await res.json();
+          setOrgs(data);
+        }
+      } catch (err) {
+        console.error("Error fetching organizations:", err);
+      }
+    };
+    fetchOrgs();
+  }, []);
+
+  // Map flat DB array to structured category lists dynamically
+  const organizationData = [
+    {
+      category: 'Colleges',
+      id: 'colleges',
+      organizations: orgs.filter(o => o.category.toLowerCase() === 'colleges')
+    },
+    {
+      category: 'Companies',
+      id: 'companies',
+      organizations: orgs.filter(o => o.category.toLowerCase() === 'companies')
+    },
+    {
+      category: 'Schools',
+      id: 'schools',
+      organizations: orgs.filter(o => o.category.toLowerCase() === 'schools')
+    },
+    {
+      category: 'Shops',
+      id: 'shops',
+      organizations: orgs.filter(o => o.category.toLowerCase() === 'shops')
+    }
+  ];
 
   const handleCategoryClick = (categoryId) => {
     setSelectedCategory(categoryId);
@@ -70,7 +90,7 @@ const Organizations = () => {
           <div className="full-list-grid">
             {currentOrganizations.organizations.map((org) => (
               <div key={org.id} className="org-card">
-                <img src={org.logo} alt={org.name} className="org-logo" />
+                <OrgLogo org={org} />
                 <p className="org-name">{org.name}</p>
               </div>
             ))}
@@ -82,13 +102,13 @@ const Organizations = () => {
             <div key={category.id} className="category-section">
               <h3 className="category-heading">{category.category}</h3>
               <div className="org-carousel">
-                {category.organizations.slice(0, 4).map((org) => (
+                {category.organizations.slice(0, 5).map((org) => (
                   <div 
                     key={org.id} 
                     className="org-carousel-item" 
                     onClick={() => handleCategoryClick(category.id)}
                   >
-                    <img src={org.logo} alt={org.name} className="org-logo" />
+                    <OrgLogo org={org} />
                     <p className="org-name">{org.name}</p>
                   </div>
                 ))}
