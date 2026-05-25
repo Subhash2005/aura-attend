@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import React, { useState } from 'react';
 import '../styles/suggestion.css';
 import API_BASE from '../config';
@@ -19,16 +20,16 @@ const Suggestion = () => {
 
       if (res.ok) {
         setSubmitted(true);
-        alert("Thank you! Your suggestion has been recorded.");
+        Swal.fire("Thank you! Your suggestion has been recorded.");
         setName("");
         setEmail("");
         setSuggestion("");
       } else {
-        alert("Something went wrong. Please try again.");
+        Swal.fire("Something went wrong. Please try again.");
       }
     } catch (err) {
       console.error(err);
-      alert("Server connection failed. Please try again.");
+      Swal.fire("Server connection failed. Please try again.");
     }
   };
 

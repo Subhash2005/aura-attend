@@ -116,3 +116,20 @@ ul {
 ul li {
   margin-bottom: 0.5rem;
 }
+
+@media (max-width: 768px) {
+  .documentation-container {
+    flex-direction: column;
+  }
+  .documentation-nav {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+    padding: 1rem;
+  }
+  .documentation-content {
+    padding: 1.5rem;
+  }
+}

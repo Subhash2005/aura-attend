@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/register.css";
@@ -61,15 +62,15 @@ const Register = () => {
             if (res.ok) {
                 setSubmitted(true);
                 console.log("Registered successfully");
-                alert("Registration successful! Redirecting to login...");
+                Swal.fire("Registration successful! Redirecting to login...");
                 navigate("/login");
             } else {
                 console.error("Something went wrong");
-                alert(`Registration Failed: ${data.msg || "Please check if fields are entered correctly!"}`);
+                Swal.fire(`Registration Failed: ${data.msg || "Please check if fields are entered correctly!"}`);
             }
         } catch (err) {
             console.error(err);
-            alert("Server connection failed. Please make sure the backend is running!");
+            Swal.fire("Server connection failed. Please make sure the backend is running!");
         }
     };
 

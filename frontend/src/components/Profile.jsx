@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/Profile.css";
 import { useNavigate } from "react-router-dom";
@@ -240,7 +241,7 @@ const Profile = () => {
 
     const handleSave = async () => {
         if (!profilePhoto || !idCardPhoto) {
-            alert("Identity Verification Locked: Both Profile Photo (Selfie) and ID Card Photo are compulsory to verify your identity!");
+            Swal.fire("Identity Verification Locked: Both Profile Photo (Selfie) and ID Card Photo are compulsory to verify your identity!");
             return;
         }
 
@@ -249,7 +250,7 @@ const Profile = () => {
         const lowerUser = username.toLowerCase().trim();
         
         if (!lowerName.includes(lowerUser) && !lowerUser.includes(lowerName)) {
-            alert(`Identity Verification Failed: The Name in the ID Card / Profile ("${formData.name || "Empty"}") does not match your registered username (${username})!`);
+            Swal.fire(`Identity Verification Failed: The Name in the ID Card / Profile ("${formData.name || "Empty"}") does not match your registered username (${username})!`);
             return;
         }
 
@@ -266,7 +267,7 @@ const Profile = () => {
         
         // Use 70% threshold for ID card scanning
         if (similarity < 0.70) {
-            alert(`Biometric Verification Failed: The face on your Profile Photo does not match the face on your ID Card! (Similarity: ${matchScore}% - REJECTED)\n\nPlease make sure to upload a clear selfie and matching ID photo representing the same person.`);
+            Swal.fire(`Biometric Verification Failed: The face on your Profile Photo does not match the face on your ID Card! (Similarity: ${matchScore}% - REJECTED)\n\nPlease make sure to upload a clear selfie and matching ID photo representing the same person.`);
             return;
         }
 
@@ -286,15 +287,15 @@ const Profile = () => {
             const data = await res.json();
 
             if (res.ok) {
-                alert(data.msg || "Profile and official Photo/ID updated successfully!");
+                Swal.fire(data.msg || "Profile and official Photo/ID updated successfully!");
                 setIsEditing(false);
                 fetchProfile(username);
             } else {
-                alert(data.msg || "Verification Failed: Face comparison or name signature mismatch.");
+                Swal.fire(data.msg || "Verification Failed: Face comparison or name signature mismatch.");
             }
         } catch (err) {
             console.error("Error saving profile:", err);
-            alert("Server connection failed. Please try again.");
+            Swal.fire("Server connection failed. Please try again.");
         }
     };
 

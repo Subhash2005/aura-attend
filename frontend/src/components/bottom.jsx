@@ -22,7 +22,7 @@ function Bottom() {
 
   return (
     <div className="timeline-section">
-      <h2 className="section-title">Use Cases</h2>
+      <h2 className="use-cases-title">Use Cases</h2>
       <div className="timeline-container">
         {useCaseData.map((useCase, index) => (
           <div

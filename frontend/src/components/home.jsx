@@ -4,6 +4,7 @@ import "../styles/Home.css";
 import img1 from "../assets/mainpage/img1.png"; // Left
 import img2 from "../assets/mainpage/img2.png"; // Middle
 import img3 from "../assets/mainpage/img3.png"; // Right
+import { FaCompass, FaUserAlt } from "react-icons/fa";
 
 
 
@@ -12,12 +13,12 @@ function EllipseText() {
   return (
     <div>
 <div className="row px-4 align-items-center">
-  <div class="col d-flex justify-content-start ms-3">
-  <div class="hover-container">
-    <button class="explore px-4 py-2 bg-white/20 rounded-xl hover:bg-white/30 transition">
-      Explore
+  <div className="col d-flex justify-content-start ms-3">
+  <div className="hover-container">
+    <button className="explore px-4 py-2 bg-white/20 rounded-xl hover:bg-white/30 transition">
+      <FaCompass className="mobile-icon" /> <span className="desktop-text">Explore</span>
     </button>
-    <div class="sliding-window">
+    <div className="sliding-window">
 <Link to="/join" className="sliding-item">Join us</Link>
 <Link to="/suggestion" className="sliding-item">Add Suggestion</Link>
 <Link to="/organization" className="sliding-item">Organization</Link>
@@ -36,13 +37,13 @@ function EllipseText() {
     </div>
 
   <div className="col d-flex justify-content-end me-3">
-    <div class="hover-container">
-    <button class="explore px-4 py-2 bg-white/20 rounded-xl hover:bg-white/30 transition">
-      membership
+    <div className="hover-container right-dropdown">
+    <button className="explore px-4 py-2 bg-white/20 rounded-xl hover:bg-white/30 transition">
+      <FaUserAlt className="mobile-icon" /> <span className="desktop-text">membership</span>
     </button>
-    <div class="sliding-window">
+    <div className="sliding-window">
 <Link to="/Register" className="sliding-item">Register</Link>
-      <a href="/login" class="sliding-item">Login</a>
+      <a href="/login" className="sliding-item">Login</a>
 
     </div>
   </div>

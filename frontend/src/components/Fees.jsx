@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import React, { useState, useEffect } from "react";
 import "../styles/Fees.css";
 import { useNavigate } from "react-router-dom";
@@ -63,14 +64,14 @@ const Fees = () => {
             });
 
             if (res.ok) {
-                alert("Checkout successful! Fine paid successfully. Status updated in fees_db.");
+                Swal.fire("Checkout successful! Fine paid successfully. Status updated in fees_db.");
                 fetchFees(username); // reload ledger
             } else {
-                alert("Payment processing failed. Please try again.");
+                Swal.fire("Payment processing failed. Please try again.");
             }
         } catch (err) {
             console.error("Error paying fine:", err);
-            alert("Payment connection timeout. Please try again.");
+            Swal.fire("Payment connection timeout. Please try again.");
         }
     };
 

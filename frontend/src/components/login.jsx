@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
@@ -26,7 +27,7 @@ const Login = () => {
         localStorage.setItem("username", username);
         navigate("/attendance");
       } else {
-        alert("Invalid username or password");
+        Swal.fire("Invalid username or password");
       }
     } catch (error) {
       console.error(error);

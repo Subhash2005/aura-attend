@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import React, { useState } from 'react';
 import '../styles/join.css';
 import API_BASE from '../config';
@@ -19,16 +20,16 @@ const Join = () => {
 
       if (res.ok) {
         setSubmitted(true);
-        alert("Message sent successfully to Subhash!");
+        Swal.fire("Message sent successfully to Subhash!");
         setName("");
         setEmail("");
         setMessage("");
       } else {
-        alert("Something went wrong. Please try again.");
+        Swal.fire("Something went wrong. Please try again.");
       }
     } catch (err) {
       console.error(err);
-      alert("Server connection failed. Please try again.");
+      Swal.fire("Server connection failed. Please try again.");
     }
   };
 

@@ -1,22 +1,25 @@
-
 .ellipse {
-width: "300px";
-        height: 100px;
-        background: rgba(121, 17, 196, 0.85);
-        border: 4px dashed #fff;
-        border-radius: 30% / 100%;
+  width: auto;
+  min-width: 200px;
+  max-width: 100%;
+  height: auto;
+  background: rgba(121, 17, 196, 0.85);
+  border: 4px dashed #fff;
+  border-radius: 50px;
 }
 
 .row {
   display: flex;
-  align-items: center; 
-  justify-content: space-between; 
-  margin-top: 20px;
-  margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 5%;
   padding: 30px;
-  background-color: #e7e8e4; 
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--row-bg, rgba(231, 232, 228, 0.9));
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 9999;
 }
 
 .flex {
@@ -27,98 +30,110 @@ width: "300px";
 }
 
 .explore {
-  padding: 0.5rem 1rem; 
-  background-color: rgba(249, 124, 8, 0.925); 
-  border-radius: 0.75rem; 
+  padding: 0.5rem 1rem;
+  background-color: rgba(249, 124, 8, 0.925);
+  border-radius: 0.75rem;
   color: white;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 200px;
   height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.mobile-icon {
+  display: none;
+  font-size: 1.2rem;
 }
 
 .explore:hover {
-  background-color: rgba(247, 0, 0, 0.3); /* hover:bg-white/30 equivalent */
+  background-color: rgba(247, 0, 0, 0.3);
+  /* hover:bg-white/30 equivalent */
 }
 
 .hover-container {
-  position: relative; 
-  display: inline-block; 
+  position: relative;
+  display: inline-block;
 }
 
 .sliding-window {
   position: absolute;
-  top: 100%; 
+  top: 100%;
   left: 0;
-  width: 200px; /* Adjust the width as needed */
-  max-height: 0; /* Starts with a height of 0, making it invisible */
-  overflow: hidden; /* Hides content until the height expands */
-  background-color: #b774a2; /* Dark background for the window */
+  width: 200px;
+  /* Adjust the width as needed */
+  max-height: 0;
+  /* Starts with a height of 0, making it invisible */
+  overflow: hidden;
+  /* Hides content until the height expands */
+  background-color: #b774a2;
+  /* Dark background for the window */
   border-radius: 0 0 10px 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: max-height 0.4s ease-out; /* The animation for the sliding effect */
+  transition: max-height 0.4s ease-out;
+  /* The animation for the sliding effect */
   z-index: 10;
 }
 
 /* On hover, make the window visible and animate its height */
 .hover-container:hover .sliding-window {
-  max-height: 250px; 
+  max-height: 250px;
+}
+
+.right-dropdown .sliding-window {
+  left: auto;
+  right: 0;
 }
 
 .sliding-item {
-  display: block; 
+  display: block;
   padding: 12px 16px;
-  color: white; /* White text for contrast */
-  text-decoration: none; 
+  color: white;
+  /* White text for contrast */
+  text-decoration: none;
   border-bottom: 1px solid rgba(231, 255, 12, 0.915);
   transition: background-color 0.2s ease;
 }
 
 .sliding-item:last-child {
-  border-bottom: none; /* Removes the border from the last item */
+  border-bottom: none;
+  /* Removes the border from the last item */
 }
 
 .sliding-item:hover {
-  background-color: #e8cccc; /* Changes background on hover for individual items */
+  background-color: #e8cccc;
+  /* Changes background on hover for individual items */
 }
 
 .ellipse {
-  padding: 50px 150px;
+  padding: 30px 60px;
   text-align: center;
   color: white;
   border: 4px dashed #fff;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   animation: float 3s ease-in-out infinite;
   transition: transform 0.3s, box-shadow 0.3s;
+  white-space: nowrap;
 }
-
-
 
 .ellipse .title {
-
   font-size: 2.5rem;
-
   margin-bottom: 0.5rem;
-
   font-weight: 700;
-
   letter-spacing: 1px;
-
 }
 
-
-
 .ellipse .slogan {
-
   font-size: 1.2rem;
-
   font-weight: 400;
-
   opacity: 0.9;
-
+  white-space: normal;
 }
 
 
@@ -151,91 +166,48 @@ width: "300px";
 
 
 /* Responsive */
-
 @media (max-width: 768px) {
-
   .ellipse {
-
-    padding: 30px 50px;
-
+    padding: 15px 30px;
   }
 
   .ellipse .title {
-
-    font-size: 2rem;
-
+    font-size: 1.5rem;
   }
 
   .ellipse .slogan {
-
-    font-size: 1rem;
-
+    display: none !important;
   }
-
 }
 
 /* Container to center the whole element on the page */
-
 .centered-container {
-
+  position: relative;
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
-  height: 100vh;
-
-  background-color: #f2f4f7;
-  /* Background color from the first image */
-
+  min-height: 100vh;
+  background-color: var(--bg-color, #f2f4f7);
   overflow: hidden;
-  /* Hide anything that overflows */
-
+  width: 100%;
 }
-
-
 
 
 
 
 
 /* Container for the fanned cards */
-
 .cards-fan-container {
-
   position: relative;
-
-  background: linear-gradient(to bottom right,
-
-      #ee7300,
-      /* Top-left color (light blue-grey) */
-
-      #e7e7e8,
-
-      #06ea3b
-      /* Bottom-right color (slightly darker) */
-
-    );
-
-  /* Set a specific size for the background container */
-
+  background: linear-gradient(to bottom right, #ee7300, #e7e7e8, #06ea3b);
   width: 800px;
-
+  max-width: 90vw;
   height: 500px;
-
   border-radius: 20px;
-
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  /* Take full height of parent */
-
   display: flex;
-  /* Helps to center the overall card group */
-
   justify-content: center;
-
   align-items: center;
-
 }
 
 
@@ -506,15 +478,10 @@ width: "300px";
 
 
 /* Card Content */
-
 .content {
-
-  color: #111111;
-
+  color: var(--text-color, #111111);
   text-align: center;
-
   font-family: 'Poppins', sans-serif;
-
 }
 
 
@@ -607,4 +574,115 @@ width: "300px";
 
   border: 1px solid rgba(255, 255, 255, 0.8);
 
+}
+
+/* =========================================================
+   TABLET & MOBILE RESPONSIVE OVERRIDES
+   Base rules above are preserved for laptop/desktop
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .row {
+    flex-wrap: nowrap !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin: 15px 5% !important;
+    padding: 15px 3% !important;
+  }
+
+  .row>.col {
+    margin: 0 !important;
+    width: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  .mobile-icon {
+    display: inline-block;
+  }
+
+  .desktop-text {
+    display: none;
+  }
+
+  .explore {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .ellipse {
+    width: 60% !important;
+    max-width: 600px;
+    padding: 5% 10%;
+    box-sizing: border-box;
+  }
+
+  .cards-fan-container {
+    width: 90vw;
+    max-width: 800px;
+    height: 60vw;
+    min-height: 400px;
+  }
+
+  .glass-card {
+    width: 95%;
+  }
+
+  .card-item {
+    width: 40%;
+    max-width: 350px;
+    height: 40%;
+    min-height: 200px;
+  }
+
+  .card-left {
+    transform: translateX(-30%) translateY(10px) rotate(-20deg);
+  }
+
+  .card-right {
+    transform: translateX(30%) translateY(10px) rotate(20deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .explore {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ellipse {
+    padding: 30px 5%;
+  }
+
+  .ellipse .title {
+    font-size: 1.5rem;
+  }
+
+  .cards-fan-container {
+    height: 100vw;
+    min-height: 400px;
+  }
+
+  .card-left {
+    transform: translateX(-15%) translateY(30px) rotate(-15deg);
+  }
+
+  .card-right {
+    transform: translateX(15%) translateY(30px) rotate(15deg);
+  }
+
+  .card-item {
+    width: 60%;
+    height: 220px;
+    min-height: 220px;
+  }
 }

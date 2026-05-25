@@ -64,7 +64,7 @@ function DynamicUseCases() {
 
   return (
     <div className="dynamic-cards-section">
-      <h2 className="section-title">Explore Our Features</h2>
+      <h2 className="features-title">Explore Our Features</h2>
       <div className="card-grid" ref={containerRef}>
         {cardContentData.map((data) => (
           <div key={data.id} className="dynamic-card">

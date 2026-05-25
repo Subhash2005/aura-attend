@@ -142,6 +142,12 @@
     overflow-y: auto;
 }
 
+@media (max-width: 768px) {
+    .track-sheet {
+        height: 95vh;
+    }
+}
+
 /* Header */
 .sheet-header {
     display: flex;

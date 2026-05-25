@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/Od.css";
 import {
@@ -204,7 +205,7 @@ const OD = () => {
     /* Start camera */
     const startCamera = () => {
         if (!hasProfilePhoto) {
-            alert("Biometric Lock: You must upload your Profile Photo first before taking OD photos!");
+            Swal.fire("Biometric Lock: You must upload your Profile Photo first before taking OD photos!");
             return;
         }
         setCameraOn(true);
@@ -256,7 +257,7 @@ const OD = () => {
     /* Upload photo */
     const uploadPhoto = (e) => {
         if (!hasProfilePhoto) {
-            alert("Biometric Lock: You must upload your Profile Photo first!");
+            Swal.fire("Biometric Lock: You must upload your Profile Photo first!");
             return;
         }
         const file = e.target.files[0];
@@ -273,15 +274,15 @@ const OD = () => {
     const handleSubmitOD = async () => {
         const username = localStorage.getItem("username") || "User";
         if (!hasProfilePhoto) {
-            alert("Biometric Lock: OD posting is locked. Please upload your Profile Photo first!");
+            Swal.fire("Biometric Lock: OD posting is locked. Please upload your Profile Photo first!");
             return;
         }
         if (!reason || !days) {
-            alert("Please enter a reason and number of days for the OD!");
+            Swal.fire("Please enter a reason and number of days for the OD!");
             return;
         }
         if (!photo) {
-            alert("Please capture or upload a selfie for verification!");
+            Swal.fire("Please capture or upload a selfie for verification!");
             return;
         }
 
@@ -315,7 +316,7 @@ const OD = () => {
                 setScanStatus(`Biometric Match Failed (${matchScore}%)`);
                 setScanProgress(100);
                 setTimeout(() => {
-                    alert(`Verification Failed:\nBiometric Match Failed (${matchScore}%): The captured selfie does not match your official profile photo! Please ensure you upload your own face.`);
+                    Swal.fire(`Verification Failed:\nBiometric Match Failed (${matchScore}%): The captured selfie does not match your official profile photo! Please ensure you upload your own face.`);
                     setIsScanning(false);
                     setScanProgress(0);
                 }, 400);
@@ -342,14 +343,14 @@ const OD = () => {
                 const data = await res.json();
 
                 if (res.ok) {
-                    alert(`Biometric Match Approved! Your OD request has been submitted successfully.`);
+                    Swal.fire(`Biometric Match Approved! Your OD request has been submitted successfully.`);
                     closeSheet();
                 } else {
-                    alert(`Verification Failed: ${data.msg || "Server rejected matching."}`);
+                    Swal.fire(`Verification Failed: ${data.msg || "Server rejected matching."}`);
                 }
             } catch (err) {
                 console.error(err);
-                alert("Server connection failed. Please try again.");
+                Swal.fire("Server connection failed. Please try again.");
             } finally {
                 setIsScanning(false);
                 setScanProgress(0);
@@ -383,7 +384,7 @@ const OD = () => {
 
                 {/* LOCATION */}
                 <div className="od-section">
-                    <div className="section-title">
+                    <div className="od-section-title">
                         <FaMapMarkerAlt /> Location
                     </div>
                     <p className="address-text">{address}</p>
@@ -401,7 +402,7 @@ const OD = () => {
                 {/* REASON + DAYS */}
                 <div className="od-grid">
                     <div className="od-section">
-                        <div className="section-title">
+                        <div className="od-section-title">
                             <FaClipboardList /> Reason
                         </div>
                         <textarea
@@ -414,7 +415,7 @@ const OD = () => {
                     </div>
 
                     <div className="od-section">
-                        <div className="section-title">
+                        <div className="od-section-title">
                             <FaCalendarDay /> Days
                         </div>
                         <input
@@ -429,7 +430,7 @@ const OD = () => {
 
                 {/* SELFIE VERIFICATION */}
                 <div className="od-section">
-                    <div className="section-title">
+                    <div className="od-section-title">
                         <FaCamera /> Face verification selfie
                     </div>
 
@@ -486,7 +487,7 @@ const OD = () => {
 
                 {/* PROOF */}
                 <div className="od-section">
-                    <div className="section-title">
+                    <div className="od-section-title">
                         <FaFileUpload /> Proof
                     </div>
 

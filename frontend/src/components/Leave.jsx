@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import React, { useState, useEffect } from "react";
 import "../styles/Leave.css";
 import { useNavigate } from "react-router-dom";
@@ -41,7 +42,7 @@ const Leave = () => {
     const handleApplyLeave = async (e) => {
         e.preventDefault();
         if (!startDate || !endDate || !reason) {
-            alert("Please fill in all fields before submitting!");
+            Swal.fire("Please fill in all fields before submitting!");
             return;
         }
 
@@ -58,17 +59,17 @@ const Leave = () => {
             });
 
             if (res.ok) {
-                alert("Leave Request Approved and Logged in Database!");
+                Swal.fire("Leave Request Approved and Logged in Database!");
                 setStartDate("");
                 setEndDate("");
                 setReason("");
                 fetchLeaves(username); // reload list
             } else {
-                alert("Failed to apply leave. Please try again.");
+                Swal.fire("Failed to apply leave. Please try again.");
             }
         } catch (err) {
             console.error("Error applying leave:", err);
-            alert("Server connection failed. Please try again.");
+            Swal.fire("Server connection failed. Please try again.");
         }
     };
 

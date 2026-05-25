@@ -11,13 +11,19 @@
   perspective: 1500px;
 }
 
-.section-title {
+.features-title {
   font-size: 3rem;
   font-weight: 700;
   color: #00eaff;
   text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff, 0 0 30px #00aaff;
   margin-bottom: 60px;
   letter-spacing: 2px;
+}
+@media (max-width: 768px) {
+  .features-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
 }
 
 /* New Grid Layout */
@@ -94,4 +100,20 @@
   text-transform: uppercase;
   color: #00eaff;
   text-shadow: 0 0 5px #00eaff, 0 0 10px rgba(0, 234, 255, 0.5);
+}
+
+@media (max-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+  .dynamic-card {
+    width: 100%;
+    max-width: 300px;
+  }
 }

@@ -3,7 +3,9 @@
    =================================================== */
 
 /* Box model reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -14,21 +16,71 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
-  color: #e2e8f0;
-  background: #0f172a;
+  color: var(--text-color, #e2e8f0);
+  background: var(--bg-color, #0f172a);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+#root {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+body.light-mode {
+  --bg-color: transparent;
+  --text-color: #1a202c;
+  --row-bg: rgba(255, 255, 255, 0.6);
+}
+
+body.dark-mode {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --row-bg: rgba(30, 30, 30, 0.8);
+}
+
+body.dark-mode .timeline-section,
+body.dark-mode .team-cards-section,
+body.dark-mode .organizations-container,
+body.dark-mode .centered-container,
+body.dark-mode .glass-card,
+body.dark-mode .timeline-content,
+body.dark-mode .team-card {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #333 !important;
+}
+
+html.dark-mode,
+html:has(body.dark-mode) {
+  background: #000000 !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode p {
+  color: #ffffff !important;
 }
 
 /* Touch-friendly tap targets — all interactive elements minimum 44px */
-button, a, input, select, textarea, label {
+button,
+a,
+input,
+select,
+textarea,
+label {
   touch-action: manipulation;
 }
 
@@ -38,9 +90,12 @@ button {
   font-family: inherit;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   font-family: inherit;
-  font-size: 16px; /* Prevents iOS auto-zoom on focus */
+  font-size: 16px;
+  /* Prevents iOS auto-zoom on focus */
 }
 
 /* Images responsive by default */
@@ -60,11 +115,13 @@ a {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
 }
 
@@ -95,12 +152,16 @@ a {
   width: 180px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 @media (max-width: 480px) {
-  .img-side { width: 100px; }
+  .img-side {
+    width: 100px;
+  }
 }
+
 .img-side:hover {
   transform: translateY(-10px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Middle Image */
@@ -108,28 +169,33 @@ a {
   width: 250px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 @media (max-width: 480px) {
-  .img-middle { width: 140px; }
+  .img-middle {
+    width: 140px;
+  }
 }
+
 .img-middle:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* Colored Bubbles behind side images */
 .bg-orange-bubble {
   width: 140px;
   height: 140px;
-  background-color: rgba(255,165,0,0.3);
+  background-color: rgba(255, 165, 0, 0.3);
   border-radius: 50%;
   top: -40px;
   left: -20px;
   z-index: -1;
 }
+
 .bg-blue-bubble {
   width: 140px;
   height: 140px;
-  background-color: rgba(30,144,255,0.3);
+  background-color: rgba(30, 144, 255, 0.3);
   border-radius: 50%;
   top: -40px;
   right: -20px;
@@ -142,15 +208,17 @@ a {
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(106,13,173,0.85);
+  background: rgba(106, 13, 173, 0.85);
   padding: 15px 30px;
   border-radius: 50px;
   text-align: center;
 }
+
 .ellipse-overlay h2 {
   font-size: clamp(1.2rem, 4vw, 1.8rem);
   margin-bottom: 0.3rem;
 }
+
 .ellipse-overlay p {
   font-size: clamp(0.75rem, 2.5vw, 1rem);
   margin: 0;
@@ -162,10 +230,11 @@ a {
   border-radius: 50px;
   color: white;
   font-weight: 600;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
   cursor: pointer;
 }
+
 .bubble-box:hover {
   transform: scale(1.1);
 }

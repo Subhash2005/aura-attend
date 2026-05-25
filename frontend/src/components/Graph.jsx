@@ -63,7 +63,7 @@ const Graph = () => {
                 {/* Header */}
                 <div className="graph-header">
                     <h2><FaChartPie /> Attendance Insights</h2>
-                    <FaTimesCircle className="close-btn" onClick={() => navigate(-1)} />
+                    <FaTimes className="close-btn" onClick={() => navigate(-1)} />
                 </div>
 
                 {/* Note */}

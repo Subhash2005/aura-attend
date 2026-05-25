@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import React, { useState, useEffect } from 'react';
 import '../styles/spons.css';
 import API_BASE from '../config';
@@ -79,7 +80,7 @@ const Spons = () => {
       });
 
       if (res.ok) {
-        alert("Application submitted successfully! Thank you for sponsoring Aura Attend.");
+        Swal.fire("Application submitted successfully! Thank you for sponsoring Aura Attend.");
         setShowForm(false);
         setCurrentStep(1);
         // Clear fields
@@ -93,11 +94,11 @@ const Spons = () => {
         setProductDetails("");
         setCompanyMotto("");
       } else {
-        alert("Something went wrong. Please try again.");
+        Swal.fire("Something went wrong. Please try again.");
       }
     } catch (err) {
       console.error(err);
-      alert("Server connection failed. Please try again.");
+      Swal.fire("Server connection failed. Please try again.");
     }
   };
 
@@ -140,7 +141,7 @@ const Spons = () => {
                 if (companyName && hrContact && ownerName) {
                   setCurrentStep(2);
                 } else {
-                  alert("Please fill out all fields.");
+                  Swal.fire("Please fill out all fields.");
                 }
               }}>Next</button>
             </div>
@@ -191,7 +192,7 @@ const Spons = () => {
                 if (cin && gst && mobileNumber && email) {
                   setCurrentStep(3);
                 } else {
-                  alert("Please fill out all fields.");
+                  Swal.fire("Please fill out all fields.");
                 }
               }}>Next</button>
             </div>

@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/Attendance_page.css";
@@ -211,7 +212,7 @@ const Attendance = () => {
     /* Camera */
     const startCamera = async () => {
         if (!hasProfilePhoto) {
-            alert("Biometric Lock: You must upload your Profile Photo first before taking attendance!");
+            Swal.fire("Biometric Lock: You must upload your Profile Photo first before taking attendance!");
             return;
         }
         setPhoto(null);
@@ -226,12 +227,12 @@ const Attendance = () => {
                     }
                 } catch (err) {
                     console.error("Camera fail:", err);
-                    alert("Webcam not ready. Check hardware connections!");
+                    Swal.fire("Webcam not ready. Check hardware connections!");
                 }
             }, 50);
         } catch (err) {
             console.error("Camera fail:", err);
-            alert("Webcam not ready. Check hardware connections!");
+            Swal.fire("Webcam not ready. Check hardware connections!");
         }
     };
 
@@ -256,11 +257,11 @@ const Attendance = () => {
     // Simulated Biometric Scanning and matching sequence
     const handlePostAttendance = async () => {
         if (!hasProfilePhoto) {
-            alert("Biometric Lock: Daily attendance is locked. Please upload your Profile Photo first!");
+            Swal.fire("Biometric Lock: Daily attendance is locked. Please upload your Profile Photo first!");
             return;
         }
         if (!photo) {
-            alert("Please open camera and capture a selfie before posting attendance!");
+            Swal.fire("Please open camera and capture a selfie before posting attendance!");
             return;
         }
 
@@ -300,7 +301,7 @@ const Attendance = () => {
                 setScanStatus(`Biometric Match Failed (${matchScore}%)`);
                 setScanProgress(100);
                 setTimeout(() => {
-                    alert(`Verification Failed:\nBiometric Match Failed (${matchScore}%): The captured daily selfie does not match your official profile photo! Please ensure you upload/capture your own face.`);
+                    Swal.fire(`Verification Failed:\nBiometric Match Failed (${matchScore}%): The captured daily selfie does not match your official profile photo! Please ensure you upload/capture your own face.`);
                     setIsScanning(false);
                     setScanProgress(0);
                 }, 400);
@@ -326,14 +327,14 @@ const Attendance = () => {
                 const data = await res.json();
 
                 if (res.ok) {
-                    alert(`Biometric Match Approved! Daily attendance and location successfully saved in database.`);
+                    Swal.fire(`Biometric Match Approved! Daily attendance and location successfully saved in database.`);
                     setPhoto(null);
                 } else {
-                    alert(`Verification Failed: ${data.msg || "Server rejected matching."}`);
+                    Swal.fire(`Verification Failed: ${data.msg || "Server rejected matching."}`);
                 }
             } catch (err) {
                 console.error(err);
-                alert("Server connection failed. Please try again.");
+                Swal.fire("Server connection failed. Please try again.");
             } finally {
                 setIsScanning(false);
                 setScanProgress(0);
