@@ -16,117 +16,6 @@ import {
 import { NavLink } from "react-router-dom";
 import API_BASE from "../config";
 
-// HTML5 Canvas Low-Frequency Color Layout visual hash similarity checker (Fast, Z-score normalized, 100% robust)
-const verifyFaceVisualSimilarity = (profilePhotoBase64, capturedPhotoBase64) => {
-    return new Promise((resolve) => {
-        if (!profilePhotoBase64 || !capturedPhotoBase64) {
-            resolve(0.95); // fallback
-            return;
-        }
-
-        const img1 = new Image();
-        const img2 = new Image();
-        
-        let loadedCount = 0;
-        const checkLoaded = () => {
-            loadedCount++;
-            if (loadedCount === 2) {
-                try {
-                    const canvas1 = document.createElement("canvas");
-                    const canvas2 = document.createElement("canvas");
-                    canvas1.width = 16;
-                    canvas1.height = 16;
-                    canvas2.width = 16;
-                    canvas2.height = 16;
-
-                    const ctx1 = canvas1.getContext("2d");
-                    const ctx2 = canvas2.getContext("2d");
-
-                    // Crop center 70% of both images to focus purely on the face and ignore background changes
-                    const cropImageCenter = (ctx, img) => {
-                        const srcW = img.width;
-                        const srcH = img.height;
-                        const cropSize = Math.min(srcW, srcH) * 0.7;
-                        const sx = (srcW - cropSize) / 2;
-                        const sy = (srcH - cropSize) / 2;
-                        ctx.drawImage(img, sx, sy, cropSize, cropSize, 0, 0, 16, 16);
-                    };
-
-                    cropImageCenter(ctx1, img1);
-                    cropImageCenter(ctx2, img2);
-
-                    const data1 = ctx1.getImageData(0, 0, 16, 16).data;
-                    const data2 = ctx2.getImageData(0, 0, 16, 16).data;
-
-                    const lums1 = [];
-                    const lums2 = [];
-                    let sum1 = 0;
-                    let sum2 = 0;
-
-                    for (let i = 0; i < data1.length; i += 4) {
-                        const r1 = data1[i];
-                        const g1 = data1[i+1];
-                        const b1 = data1[i+2];
-                        const lum1 = 0.299 * r1 + 0.587 * g1 + 0.114 * b1;
-                        lums1.push(lum1);
-                        sum1 += lum1;
-
-                        const r2 = data2[i];
-                        const g2 = data2[i+1];
-                        const b2 = data2[i+2];
-                        const lum2 = 0.299 * r2 + 0.587 * g2 + 0.114 * b2;
-                        lums2.push(lum2);
-                        sum2 += lum2;
-                    }
-
-                    const mean1 = sum1 / lums1.length;
-                    const mean2 = sum2 / lums2.length;
-
-                    let dotProduct = 0;
-                    let normA = 0;
-                    let normB = 0;
-
-                    for (let i = 0; i < lums1.length; i++) {
-                        const diff1 = lums1[i] - mean1;
-                        const diff2 = lums2[i] - mean2;
-
-                        dotProduct += diff1 * diff2;
-                        normA += diff1 * diff1;
-                        normB += diff2 * diff2;
-                    }
-
-                    if (normA === 0 || normB === 0) {
-                        resolve(0.5);
-                        return;
-                    }
-
-                    const correlation = dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
-                    
-                    // Map Pearson correlation to [0.0, 1.0] similarity: correlation of 0.26 maps to >= 0.70 (PASS)
-                    let similarity = 0.5;
-                    if (correlation > 0) {
-                        similarity = 0.60 + correlation * 0.38;
-                    } else {
-                        similarity = 0.60 + correlation * 0.40;
-                    }
-
-                    resolve(similarity);
-                } catch (e) {
-                    console.error("Canvas similarity error:", e);
-                    resolve(0.95);
-                }
-            }
-        };
-
-        img1.onload = checkLoaded;
-        img1.onerror = () => resolve(0.95);
-        img2.onload = checkLoaded;
-        img2.onerror = () => resolve(0.95);
-
-        img1.src = profilePhotoBase64;
-        img2.src = capturedPhotoBase64;
-    });
-};
 
 const OD = () => {
     const [coords, setCoords] = useState(null);
@@ -140,7 +29,6 @@ const OD = () => {
 
     // Biometric Verification States
     const [hasProfilePhoto, setHasProfilePhoto] = useState(true);
-    const [savedProfilePhoto, setSavedProfilePhoto] = useState("");
     const [isScanning, setIsScanning] = useState(false);
     const [scanStatus, setScanStatus] = useState("");
     const [scanProgress, setScanProgress] = useState(0);
@@ -170,7 +58,6 @@ const OD = () => {
                     setHasProfilePhoto(false);
                 } else {
                     setHasProfilePhoto(true);
-                    setSavedProfilePhoto(data.profilePhoto);
                     setIsFakeProfile(data.isFakeProfile || false);
                 }
             }

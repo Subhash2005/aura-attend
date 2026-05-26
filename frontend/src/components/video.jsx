@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/DemoVideo.css';
-import demoVideo from '../assets/video/20260525-1301-05.3538754.mp4';
-
 function DemoVideo() {
   const videoRef = useRef(null);
   const [activeUsers, setActiveUsers] = useState(0);
@@ -43,7 +41,7 @@ function DemoVideo() {
           <h2 className="video-title">Our Product in Action</h2>
           <div className="video-wrapper">
             <video ref={videoRef} className="demo-video" controls loop>
-              <source src={demoVideo} type="video/mp4" />
+              <source src="https://res.cloudinary.com/dgfbjfokc/video/upload/v1779779936/20260525-1301-05.3538754_cdp3ee.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             {!hasInteracted && (

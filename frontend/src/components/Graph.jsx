@@ -9,8 +9,7 @@ import {
     FaBriefcase,
     FaCalendarCheck,
     FaRupeeSign,
-    FaChevronDown,
-    FaTimesCircle
+    FaChevronDown
 } from "react-icons/fa";
 
 const Graph = () => {

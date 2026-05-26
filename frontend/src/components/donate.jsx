@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaHeart, FaHandsHelping, FaDonate } from 'react-icons/fa';
+import { FaHeart, FaHandsHelping } from 'react-icons/fa';
 import '../styles/donate.css';
 
 const Donate = () => {
